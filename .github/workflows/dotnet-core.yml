@@ -1,27 +1,14 @@
-name: .NET Core
+name: CI on Push and Pull Request
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
-jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
+on: [push, pull_request]
+        
+  Android:
+    runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 3.1.301
-    - name: Install dependencies
-      run: dotnet restore
-    - name: Build
-      run: msbuild 
-    - name: Pack
-      run: dotnet pack src/circleprogressbar-android-binding/Naxam.CircleProgressBar.Droid/Naxam.CircleProgressBar.Droid.csproj --output nuget-packages --configuration Release
-    - name: Push
-      run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+    - uses: actions/checkout@v1
+    - name: Android
+      run: |
+        cd circleprogressbar-android-binding
+        nuget restore
+        cd Naxam.CircleProgressBar.Droid
+        msbuild Naxam.CircleProgressBar.Droid.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
