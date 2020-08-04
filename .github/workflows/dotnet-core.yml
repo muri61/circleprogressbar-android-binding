@@ -14,4 +14,4 @@ jobs:
     - name: Pack
       run: nuget pack Naxam.CircleProgressBar.Droid/Naxam.CircleProgressBar.Droid.csproj
     - name: Push
-      run: nuget push /Users/runner/work/circleprogressbar-android-binding/circleprogressbar-android-binding/*.nupkg -Source https://api.nuget.org/v3/index.json -ApiKey $(secrets.NUGET_API_KEY)
+      run: nuget push /Users/runner/work/circleprogressbar-android-binding/circleprogressbar-android-binding/*.nupkg -Source https://api.nuget.org/v3/index.json -ApiKey ${{secrets.NUGET_API_KEY}}
