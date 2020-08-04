@@ -14,4 +14,4 @@ jobs:
     - name: Pack
       run: nuget pack Naxam.CircleProgressBar.Droid/Naxam.CircleProgressBar.Droid.csproj
     - name: Push
-      run: nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+      run: nuget push nuget-packages/*.nupkg --api-key $(secrets.NUGET_API_KEY) --source https://api.nuget.org/v3/index.json
