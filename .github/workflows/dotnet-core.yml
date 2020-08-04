@@ -20,7 +20,7 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --configuration Release --no-restore
+      run: msbuild 
     - name: Pack
       run: dotnet pack src/circleprogressbar-android-binding/Naxam.CircleProgressBar.Droid/Naxam.CircleProgressBar.Droid.csproj --output nuget-packages --configuration Release
     - name: Push
