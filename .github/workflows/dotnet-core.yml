@@ -9,9 +9,9 @@ jobs:
     - name: Android
       run: |
         nuget restore
-        cd Naxam.CircleProgressBar.Droid
-        msbuild Naxam.CircleProgressBar.Droid.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
+        cd Murat.CircleProgressBar.Droid
+        msbuild Murat.CircleProgressBar.Droid.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
     - name: Pack
-      run: nuget pack Naxam.CircleProgressBar.Droid/Naxam.CircleProgressBar.Droid.csproj
+      run: nuget pack Murat.CircleProgressBar.Droid/Murat.CircleProgressBar.Droid.csproj
     - name: Push
       run: nuget push /Users/runner/work/circleprogressbar-android-binding/circleprogressbar-android-binding/*.nupkg -Source https://api.nuget.org/v3/index.json -ApiKey ${{secrets.NUGET_API_KEY}}
